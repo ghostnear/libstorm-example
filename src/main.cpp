@@ -1,8 +1,15 @@
-#include <cstdio>
 #include <libstorm.hpp>
+
+using namespace Storm;
 
 int main(int argc, char* argv[])
 {
+    // Init and quit on fail
+    if(Storm_Init() == EXIT_FAILURE)
+        return EXIT_FAILURE;
+
     printf("Hello World!\n");
-    return 0;
+
+    // Quit and return the quit result
+    return Storm_Quit();
 }
