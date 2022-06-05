@@ -20,6 +20,8 @@ int main(int argc, char* argv[])
         // Update
 
         // Draw
+        Graphics::clear(0, 0, 0);
+        Graphics::update();
     }
 
     // Quit and return the quit result
