@@ -5,11 +5,23 @@ using namespace Storm;
 int main(int argc, char* argv[])
 {
     // Init and quit on fail
-    if(Storm_Init() == EXIT_FAILURE)
+    if(StormInit() == EXIT_FAILURE)
         return EXIT_FAILURE;
 
-    printf("Hello World!\n");
+    // Set metadata
+    Window::setName("Example app");
+
+    // Main loop
+    while(!Window::shouldClose())
+    {
+        // Poll events
+        Input::pollEvents();
+
+        // Update
+
+        // Draw
+    }
 
     // Quit and return the quit result
-    return Storm_Quit();
+    return StormQuit();
 }
