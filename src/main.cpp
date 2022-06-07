@@ -12,9 +12,8 @@ int main(int argc, char* argv[])
     // Set metadata
     Window::setName("Example");
 
-    // Create game manager
-    GameManager g;
-    g.pushState(new mainState());
+    // Push the default state to the manager
+    GameManager::pushState(new mainState());
 
     // Main loop
     while(!Window::shouldClose())
@@ -23,10 +22,10 @@ int main(int argc, char* argv[])
         Input::pollEvents();
 
         // Update
-        g.update(0);
+        GameManager::update();
 
         // Draw
-        g.draw();
+        GameManager::draw();
     }
 
     // Quit and return the quit result

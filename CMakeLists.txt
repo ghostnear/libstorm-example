@@ -14,6 +14,7 @@ add_executable(
     exampleApp
     "src/main.cpp"
     "src/states/mainState.cpp"
+    "src/systems/rectdraw.cpp"
 )
 
 set_property(TARGET exampleApp PROPERTY CXX_STANDARD 14)
