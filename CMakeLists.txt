@@ -13,9 +13,10 @@ add_subdirectory(external)
 add_executable(
     exampleApp
     "src/main.cpp"
+    "src/states/mainState.cpp"
 )
 
-set_property(TARGET exampleApp PROPERTY CXX_STANDARD 11)
+set_property(TARGET exampleApp PROPERTY CXX_STANDARD 14)
 
 target_link_libraries(
     exampleApp

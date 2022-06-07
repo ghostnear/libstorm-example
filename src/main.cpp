@@ -1,4 +1,5 @@
 #include <libstorm.hpp>
+#include "states/states.hpp"
 
 using namespace Storm;
 
@@ -9,7 +10,11 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
 
     // Set metadata
-    Window::setName("Example app");
+    Window::setName("Example");
+
+    // Create game manager
+    GameManager g;
+    g.pushState(new mainState());
 
     // Main loop
     while(!Window::shouldClose())
@@ -18,14 +23,10 @@ int main(int argc, char* argv[])
         Input::pollEvents();
 
         // Update
-
-        // Press E to close window
-        if(Input::isPressed(SDLK_e))
-            Window::close();
+        g.update(0);
 
         // Draw
-        Graphics::clear(0, 0, 0);
-        Graphics::update();
+        g.draw();
     }
 
     // Quit and return the quit result
