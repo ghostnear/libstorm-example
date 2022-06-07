@@ -19,6 +19,10 @@ int main(int argc, char* argv[])
 
         // Update
 
+        // Press E to close window
+        if(Input::isPressed(SDLK_e))
+            Window::close();
+
         // Draw
         Graphics::clear(0, 0, 0);
         Graphics::update();
