@@ -10,9 +10,9 @@ void mainState::onInit()
 	signature.set(w.getComponentType<FRect>());
     w.setSystemSignature<RectDrawSystem>(signature);
 
-    for(int i = 0; i <= 11; i++)
+    for(int i = 0; i <= Window::getSize().first / 54 + 1; i++)
     {
-        for(int j = 0; j <= 11; j++)
+        for(int j = 0; j <= Window::getSize().second / 54 + 1; j++)
         {
             auto entity = w.createEntity();
 
@@ -49,8 +49,6 @@ void mainState::draw(GameManager* gm)
 void mainState::update(GameManager* gm, double dt)
 {
     drawSystem -> update(&w, dt);
-
-    Window::setName("Example " + std::to_string((int)GameManager::getFPS()) + " fps");
 
     // Press escape to close window
     if(Input::isReleased(SDLK_ESCAPE))
