@@ -2,36 +2,7 @@
 
 void mainState::onInit()
 {
-    w.registerComponent<FRect>();
-
-    drawSystem = w.registerSystem<RectDrawSystem>();
-
-	Signature signature;
-	signature.set(w.getComponentType<FRect>());
-    w.setSystemSignature<RectDrawSystem>(signature);
-
-    for(int i = 0; i <= Window::getSize().first / 54 + 1; i++)
-    {
-        for(int j = 0; j <= Window::getSize().second / 54 + 1; j++)
-        {
-            auto entity = w.createEntity();
-
-            if(i % 2 != j % 2)
-                w.addComponent(
-                    entity,
-                    FRect{
-                        .pos{
-                            .x = (i - 1) * 54.0,
-                            .y = (j - 1) * 54.0
-                        },
-                        .size{
-                            .x = 54.0,
-                            .y = 54.0
-                        }
-                    }
-                );
-        }
-    }
+    offset = 0;
 }
 
 void mainState::onDestroy()
@@ -42,13 +13,31 @@ void mainState::onDestroy()
 void mainState::draw(GameManager* gm)
 {
     Graphics::clear(50, 100, 155);
-    drawSystem -> draw(&w);
+
+    SDL_Rect r;
+    auto size = Window::getSize();
+
+    for(int32_t i = 0; i <= size.first / 54 + 1; i++)
+        for(int32_t j = 0; j <= size.second / 54 + 1; j++)
+            if(i % 2 == j % 2)
+            {
+                SDL_SetRenderDrawColor(Graphics::getSDL(), 50, 130, 155, 255);
+                r.x = i * 54 + offset;
+                r.y = j * 54 + offset;
+                r.w = 54;
+                r.h = 54;
+                SDL_RenderFillRect(Graphics::getSDL(), &r);
+            }
+
     Graphics::update();
 }
 
 void mainState::update(GameManager* gm, double dt)
 {
-    drawSystem -> update(&w, dt);
+    // Offset clamping
+    offset -= 54 * dt;
+    if(offset < -54)
+        offset += 54;
 
     // Press escape to close window
     if(Input::isReleased(SDLK_ESCAPE))

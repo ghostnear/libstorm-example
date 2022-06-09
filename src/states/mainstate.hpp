@@ -2,8 +2,6 @@
 #define GAME_MAINSTATE_HPP
 
 #include <libstorm.hpp>
-#include "../systems/systems.hpp"
-#include "../components/components.hpp"
 
 using namespace Storm;
 
@@ -17,7 +15,7 @@ public:
 
 private:
     World w;
-    std::shared_ptr<RectDrawSystem> drawSystem;
+    double offset;
 };
 
 #endif

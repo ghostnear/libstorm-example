@@ -37,7 +37,6 @@ add_executable(
     ${PROJECT_NAME}
     "src/main.cpp"
     "src/states/mainState.cpp"
-    "src/systems/rectdraw.cpp"
 )
 
 target_link_libraries(
