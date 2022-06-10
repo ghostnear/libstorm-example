@@ -25,9 +25,10 @@ int main(int argc, char* argv[])
         GameManager::update();
 
         // Draw
-        GameManager::draw();
+        if(!Window::isMinimized())
+            GameManager::draw();
     }
 
     // Quit and return the quit result
-    return StormQuit();
+    return StormQuit(0);
 }
