@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.2)
 
 # PSvita specifics
 if(BUILD_TARGET MATCHES "VITA")
@@ -25,6 +25,8 @@ else()
     # Project output path for install()
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin/)
 endif()
+
+add_compile_definitions(BUILD_TYPE_${BUILD_TARGET})
 
 # Project metadata
 project(exampleApp)

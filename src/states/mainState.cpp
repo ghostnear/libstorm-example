@@ -42,4 +42,13 @@ void mainState::update(GameManager* gm, double dt)
     // Press escape to close window
     if(Input::isReleased(SDLK_ESCAPE))
         Window::close();
+
+    // Toggle fullscreen
+    if(Input::isPressed(SDLK_F11))
+    {
+        if(!Window::isFullscreen())
+            Window::setFullscreen(SDL_WINDOW_FULLSCREEN_DESKTOP);
+        else
+            Window::setFullscreen(0);
+    }       
 }
