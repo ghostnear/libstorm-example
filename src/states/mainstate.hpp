@@ -14,7 +14,6 @@ public:
     void update(GameManager* gm, double dt) override;
 
 private:
-    World w;
     double offset;
 };
 

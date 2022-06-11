@@ -56,12 +56,19 @@ if(BUILD_TARGET MATCHES "VITA")
     vita_create_vpk(${PROJECT_NAME}.vpk ${VITA_TITLEID} ${PROJECT_NAME}.self
         VERSION ${VITA_VERSION}
         NAME ${VITA_APP_NAME}
-        FILE assets/sce_sys/icon0.png sce_sys/icon0.png
-        FILE assets/sce_sys/livearea/contents/bg.png sce_sys/livearea/contents/bg.png
-        FILE assets/sce_sys/livearea/contents/startup.png sce_sys/livearea/contents/startup.png
-        FILE assets/sce_sys/livearea/contents/template.xml sce_sys/livearea/contents/template.xml
+        FILE assets/vita/icon0.png sce_sys/icon0.png
+        FILE assets/vita/livearea/contents/bg.png sce_sys/livearea/contents/bg.png
+        FILE assets/vita/livearea/contents/startup.png sce_sys/livearea/contents/startup.png
+        FILE assets/vita/livearea/contents/template.xml sce_sys/livearea/contents/template.xml
+        FILE assets/fonts/LICENSE.md assets/fonts/LICENSE.md
+        FILE assets/fonts/SourceCodePro-Light.otf assets/fonts/SourceCodePro-Light.otf
     )
 else()
     # Install executables
     install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD 
+    COMMAND "${CMAKE_COMMAND}" -E copy_directory
+            "../assets/fonts"
+            "../bin/assets/fonts" 
+        COMMENT "Copying assets to output directory")  
 endif()
