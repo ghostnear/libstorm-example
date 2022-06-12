@@ -61,7 +61,7 @@ void mainState::update(GameManager* gm, double dt)
     if(offset < -54)
         offset += 54;
     
-    Window::setName("Example " + std::to_string(GameManager::getFPS()) + " fps");
+    Window::setName("Example " + Utils::to_string<double>(GameManager::getFPS()) + " fps");
 
     for(auto x : sys)
         x -> update(&w, dt);

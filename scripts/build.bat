@@ -1,2 +1,2 @@
-cmake -S .. -G "Ninja" -B ../build/ -DCMAKE_BUILD_TYPE=DEBUG -DBUILD_TARGET=WIN -Wno-dev
+cmake -S .. -G "Ninja" -B ../build/ -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_TARGET=WIN -Wno-dev -DCMAKE_TOOLCHAIN_FILE=C:/Users/GhostNear/scoop/apps/vcpkg/current/scripts/buildsystems/vcpkg.cmake"
 cmake --build ../build/
