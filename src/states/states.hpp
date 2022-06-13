@@ -2,6 +2,6 @@
 #define GAME_STATES_HPP
 
 // All game states go here
-#include "mainstate.hpp"
+#include "mainState.hpp"
 
 #endif

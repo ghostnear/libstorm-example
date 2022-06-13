@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     GameManager::pushState(new mainState());
 
     // Main loop
-    while(!Window::shouldClose())
+    while(!Window::shouldClose() && GameManager::isRunning())
     {
         // Poll events
         Input::pollEvents();

@@ -1,20 +1,18 @@
-#ifndef GAME_MAINSTATE_HPP
-#define GAME_MAINSTATE_HPP
+#ifndef GAME_OOPMAINSTATE_HPP
+#define GAME_OOPMAINSTATE_HPP
 
 #include <libstorm.hpp>
+#include "../objects/objects.hpp"
 
 using namespace Storm;
 
-class mainState : public State
+class mainState : public OOPState
 {
 public:
     void onInit() override;
     void onDestroy() override;
-    void draw(GameManager* gm) override;
-    void update(GameManager* gm, double dt) override;
-
-private:
-    double offset;
+    void draw() override;
+    void update(double dt) override;
 };
 
 #endif
