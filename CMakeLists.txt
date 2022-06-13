@@ -34,18 +34,36 @@ project(exampleApp)
 # Project dependencies
 add_subdirectory(external)
 
-# Project core
-add_executable(
-    ${PROJECT_NAME}
+set(
+    EXECUTABLE_FILES
     "src/main.cpp"
     "src/states/mainState.cpp"
 )
+
+# Project core
+if(BUILD_TARGET MATCHES "WIN")
+    add_executable(
+        ${PROJECT_NAME}
+        WIN32
+        ${EXECUTABLE_FILES}
+    )
+else()
+    add_executable(
+        ${PROJECT_NAME}
+        ${EXECUTABLE_FILES}
+    )
+endif()
 
 target_link_libraries(
     ${PROJECT_NAME}
     PRIVATE
         libStorm
 )
+
+# Disables command prompt on windows
+if(BUILD_TARGET MATCHES "WIN")
+    target_link_options(${PROJECT_NAME} PRIVATE -mwindows)
+endif()
 
 # PSVita config
 if(BUILD_TARGET MATCHES "VITA")

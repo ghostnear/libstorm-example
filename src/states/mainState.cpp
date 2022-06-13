@@ -24,8 +24,6 @@ void mainState::update(double dt)
     // Update the world
     w.update(this, dt);
 
-    Window::setName("Example " + Utils::to_string<double>(GameManager::getFPS()) + " fps");
-
     // Press escape to close window
     if(Input::isReleased(SDLK_ESCAPE))
         Window::close();
