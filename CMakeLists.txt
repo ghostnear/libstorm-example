@@ -80,6 +80,7 @@ if(BUILD_TARGET MATCHES "VITA")
         FILE assets/vita/livearea/contents/template.xml sce_sys/livearea/contents/template.xml
         FILE assets/fonts/LICENSE.md assets/fonts/LICENSE.md
         FILE assets/fonts/SourceCodePro-Light.otf assets/fonts/SourceCodePro-Light.otf
+        FILE assets/fonts/SourceCodePro-SemiboldIt.otf assets/fonts/SourceCodePro-SemiboldIt.otf
     )
 else()
     # Install executables

@@ -1,9 +1,7 @@
 #ifndef GAME_OBJ_BACKGROUND_HPP
 #define GAME_OBJ_BACKGROUND_HPP
 
-#include "oop.hpp"
-#include "graphics.hpp"
-#include "gamemanager.hpp"
+#include <libstorm.hpp>
 
 using namespace Storm;
 
@@ -12,7 +10,7 @@ class obj_background : public BaseClass
 public:
     void onInit() override
     {
-
+        offset = 0;
     }
 
     void onDestroy() override
@@ -28,8 +26,8 @@ public:
         auto size = Window::getSize();
 
         // Draw checkerboard pattern in the background
-        for(int32_t i = 0; i <= size.first / 54 + 1; i++)
-            for(int32_t j = 0; j <= size.second / 54 + 1; j++)
+        for(int32_t i = 0; i <= size.x / 54 + 1; i++)
+            for(int32_t j = 0; j <= size.y / 54 + 1; j++)
                 if(i % 2 == j % 2)
                 {
                     Graphics::setColor(50, 130, 155);
@@ -48,7 +46,7 @@ public:
     }
 
 private:
-    double offset = 0;
+    double offset;
 };
 
 #endif
