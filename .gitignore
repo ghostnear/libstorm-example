@@ -1,3 +1,6 @@
 # Ignore built files
 bin/
 build/
+
+# Ignore vscode specific files
+.vscode/

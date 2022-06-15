@@ -13,6 +13,13 @@ int main(int argc, char* argv[])
     Window::setName("Example");
 
     // Push the default state to the manager
+    // TODO: replace this with a config system
+    #ifdef BUILD_TYPE_VITA
+    GameManager::limitFPS(60);
+    #else
+    GameManager::limitFPS(144);
+    #endif
+    
     GameManager::pushState(new mainState());
 
     // Main loop
@@ -30,5 +37,5 @@ int main(int argc, char* argv[])
     }
 
     // Quit and return the quit result
-    return StormQuit(0);
+    return StormQuit(EXIT_SUCCESS);
 }

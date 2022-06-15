@@ -23,6 +23,11 @@ public:
 
     void update(OOPState* gm, double dt) override
     {
+        // Fps killer code, heap sheenanigans probably
+        /*TextObject::setPosition(
+            TextObject::position.x + dt / 100,
+            TextObject::position.y
+        );*/
         TextObject::update(gm, dt);
     }
 };
