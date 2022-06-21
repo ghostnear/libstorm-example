@@ -1,8 +1,10 @@
+set APP_NAME="exampleApp"
+
 cd ..
 
 pushd bin
 
-exampleApp.exe
+%APP_NAME%.exe
 
 popd
 

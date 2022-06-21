@@ -1,6 +1,6 @@
 cd ..
 
-del build
-del bin
+rmdir /s /q build
+rmdir /s /q bin
 
 cd scripts

@@ -22,11 +22,17 @@ if(BUILD_TARGET MATCHES "VITA")
     # Optional version string to show in LiveArea's more info screen
     set(VITA_VERSION  "00.01")
 else()
+    if(BUILD_TARGET MATCHES "ANDROID")
+        SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -frtti")
+        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frtti")
+        SET(CMAKE_ANDROID_GUI TRUE)
+    endif()
     # Project output path for install()
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin/)
 endif()
 
 add_compile_definitions(BUILD_TYPE_${BUILD_TARGET})
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
 # Project metadata
 project(exampleApp)

@@ -1,0 +1,13 @@
+set BUILD_TYPE="RELEASE"
+set VCPKG_ROOT="C:/Users/GhostNear/scoop/apps/vcpkg/current"
+set VCPKG_TOOLCHAIN="C:/Users/GhostNear/scoop/apps/vcpkg/current/scripts/buildsystems/vcpkg.cmake"
+set ANDROID_NDK_HOME="D:/Tools/Android/Sdk/ndk/24.0.8215888"
+set ANDROID_TOOLCHAIN="D:/Tools/Android/Sdk/ndk/24.0.8215888/build/cmake/android.toolchain.cmake"
+set ANDROID_SDK_ROOT="D:/Tools/Android/Sdk"
+set VCPKG_TRIPLET="x64-android"
+set ANDROID_ABI="x86_64"
+
+echo Running CMake build
+
+cmake -S .. -B ../build/ -DCMAKE_BUILD_TYPE=%BUILD_TYPE% -DBUILD_TARGET=ANDROID -Wno-dev -DVCPKG_TARGET_TRIPLET=%VCPKG_TRIPLET% -DCMAKE_TOOLCHAIN_FILE=%VCPKG_TOOLCHAIN% -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=%ANDROID_TOOLCHAIN% -DANDROID_ABI=%ANDROID_ABI%
+cmake --build ../build/

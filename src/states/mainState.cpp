@@ -4,7 +4,6 @@ void mainState::onInit()
 {
     w.saveInstance(new obj_background());
     w.saveInstance(new obj_menutext());
-    w.saveInstance(new obj_versiontext());
     w.saveInstance(new obj_fpstext());
 }
 
