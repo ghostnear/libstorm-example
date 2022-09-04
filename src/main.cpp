@@ -13,13 +13,13 @@ int main(int argc, char* argv[])
     Window::setName("Example");
 
     // Push the default state to the manager
-    // TODO: replace this with a config system
+    // TODO: replace this with a config system to make everything customizable
     #ifdef BUILD_TYPE_VITA
     GameManager::limitFPS(60);
     #else
     GameManager::limitFPS(144);
     #endif
-    
+
     GameManager::pushState(new mainState());
 
     // Main loop

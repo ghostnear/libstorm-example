@@ -4,3 +4,9 @@ build/
 
 # Ignore vscode specific files
 .vscode/
+
+# Ignore cmake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
