@@ -2,11 +2,10 @@
 #define GAME_OOPMAINSTATE_HPP
 
 #include <libstorm.hpp>
-#include "../objects/objects.hpp"
 
 using namespace Storm;
 
-class mainState : public OOPState
+class mainState : public State
 {
 public:
     void onInit() override;

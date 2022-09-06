@@ -3,6 +3,9 @@
 
 using namespace Storm;
 
+// The role of this example is to show how to make a window and manage a state.
+// It is also used as a base for anything else.
+
 int main(int argc, char* argv[])
 {
     // Init and quit on fail
@@ -10,7 +13,7 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
 
     // Set metadata
-    Window::setName("Example");
+    Window::setName("libStorm Example");
 
     // Push the default state to the manager
     // TODO: replace this with a config system to make everything customizable
