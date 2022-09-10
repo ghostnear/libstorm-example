@@ -44,6 +44,7 @@ set(
     EXECUTABLE_FILES
     "src/main.cpp"
     "src/states/mainState.cpp"
+    "src/nodes/simpleNode.cpp"
 )
 
 # Project core
@@ -91,9 +92,9 @@ if(BUILD_TARGET MATCHES "VITA")
 else()
     # Install executables
     install(TARGETS ${PROJECT_NAME} DESTINATION bin)
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD 
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND "${CMAKE_COMMAND}" -E copy_directory
             "../assets/fonts"
-            "../bin/assets/fonts" 
-        COMMENT "Copying assets to output directory")  
+            "../bin/assets/fonts"
+        COMMENT "Copying assets to output directory")
 endif()

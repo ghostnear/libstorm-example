@@ -2,7 +2,10 @@
 
 void mainState::onInit()
 {
-
+    simpleNodeConfig cfg {
+        message: "text"
+    };
+    this -> root -> addChild(new simpleNode(cfg), "test");
 }
 
 void mainState::onDestroy()
@@ -13,6 +16,8 @@ void mainState::onDestroy()
 void mainState::draw()
 {
     Graphics::clear(50, 100, 155);
+
+    this -> root -> executeAll("draw");
 
     Graphics::update();
 }
