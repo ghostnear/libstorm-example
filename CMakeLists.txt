@@ -44,7 +44,7 @@ set(
     EXECUTABLE_FILES
     "src/main.cpp"
     "src/states/mainState.cpp"
-    "src/nodes/simpleNode.cpp"
+    "src/nodes/scrollingRectangles.cpp"
 )
 
 # Project core

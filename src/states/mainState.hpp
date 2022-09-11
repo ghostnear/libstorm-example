@@ -2,7 +2,7 @@
 #define GAME_OOPMAINSTATE_HPP
 
 #include <libstorm.hpp>
-#include "../nodes/simpleNode.hpp"
+#include "../nodes/all.hpp"
 
 using namespace Storm;
 
