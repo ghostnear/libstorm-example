@@ -1,0 +1,6 @@
+{
+    "fonts": {
+        "font_light": "./fonts/SCP/SourceCodePro-Light.otf",
+        "font_semibold": "./fonts/SCP/SourceCodePro-SemiboldIt.otf"
+    }
+}

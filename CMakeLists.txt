@@ -85,16 +85,16 @@ if(BUILD_TARGET MATCHES "VITA")
         FILE assets/vita/livearea/contents/bg.png sce_sys/livearea/contents/bg.png
         FILE assets/vita/livearea/contents/startup.png sce_sys/livearea/contents/startup.png
         FILE assets/vita/livearea/contents/template.xml sce_sys/livearea/contents/template.xml
-        FILE assets/fonts/LICENSE.md assets/fonts/LICENSE.md
-        FILE assets/fonts/SourceCodePro-Light.otf assets/fonts/SourceCodePro-Light.otf
-        FILE assets/fonts/SourceCodePro-SemiboldIt.otf assets/fonts/SourceCodePro-SemiboldIt.otf
+        FILE assets/fonts/SCP/LICENSE.md assets/fonts/SCP/LICENSE.md
+        FILE assets/fonts/SCP/SourceCodePro-Light.otf assets/fonts/SCP/SourceCodePro-Light.otf
+        FILE assets/fonts/SCP/SourceCodePro-SemiboldIt.otf assets/fonts/SCP/SourceCodePro-SemiboldIt.otf
     )
 else()
     # Install executables
     install(TARGETS ${PROJECT_NAME} DESTINATION bin)
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND "${CMAKE_COMMAND}" -E copy_directory
-            "../assets/fonts"
-            "../bin/assets/fonts"
+            "../assets/"
+            "../bin/assets/"
         COMMENT "Copying assets to output directory")
 endif()

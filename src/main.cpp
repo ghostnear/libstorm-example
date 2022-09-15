@@ -3,7 +3,7 @@
 
 using namespace Storm;
 
-// The role of this example is to show how to make a window and manage a state.
+// The role of this example is mostly to show how to make a window and manage states.
 // It is also used as a base for anything else.
 
 int main(int argc, char* argv[])

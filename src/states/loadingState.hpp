@@ -1,5 +1,5 @@
-#ifndef GAME_MAINSTATE_HPP
-#define GAME_MAINSTATE_HPP
+#ifndef GAME_LOADINGSTATE_HPP
+#define GAME_LOADINGSTATE_HPP
 
 #include <libstorm.hpp>
 #include <prefabs/all.hpp>
@@ -7,7 +7,7 @@
 
 using namespace Storm;
 
-class mainState : public State
+class loadingState : public State
 {
 public:
     void onInit() override;
