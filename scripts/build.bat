@@ -1,0 +1,2 @@
+cmake -S .. -G "Ninja" -B ../build/ -DCMAKE_TOOLCHAIN_FILE=C:/Users/GhostNear/scoop/apps/vcpkg/current/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_ARCHITECTURE=x64-windows -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_TARGET=WIN -Wno-dev
+cmake --build ../build/
