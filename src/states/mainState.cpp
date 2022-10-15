@@ -2,6 +2,9 @@
 
 void mainState::onInit()
 {
+    // TODO: make a loding screen
+    AssetLoader::load("./assets/assetlist.json");
+
     scrollingRectanglesConfig cfg;
     this -> root -> addChild(new scrollingRectangles(cfg), "test");
 

@@ -1,0 +1,18 @@
+[
+    {
+        "type": "font",
+        "name": "font_sourcecode_light",
+        "path": "SCP/SourceCodePro-Light.otf",
+        "data": {
+            "sizes": [12, 15, 17]
+        }
+    },
+    {
+        "type": "font",
+        "name": "font_sourcecode_semibold",
+        "path": "SCP/SourceCodePro-SemiboldIt.otf",
+        "data": {
+            "sizes": [12, 15, 17]
+        }
+    }
+]
