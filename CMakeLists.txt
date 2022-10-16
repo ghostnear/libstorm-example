@@ -45,7 +45,7 @@ set(
     "src/main.cpp"
     "src/states/loadingState.cpp"
     "src/states/mainState.cpp"
-    "src/nodes/scrollingRectangles.cpp"
+    "src/nodes/mainState/scrollingRectangles.cpp"
 )
 
 # Project core
@@ -82,10 +82,12 @@ if(BUILD_TARGET MATCHES "VITA")
     vita_create_vpk(${PROJECT_NAME}.vpk ${VITA_TITLEID} ${PROJECT_NAME}.self
         VERSION ${VITA_VERSION}
         NAME ${VITA_APP_NAME}
+        # Vita System files need to be separately set
         FILE assets/vita/icon0.png sce_sys/icon0.png
         FILE assets/vita/livearea/contents/bg.png sce_sys/livearea/contents/bg.png
         FILE assets/vita/livearea/contents/startup.png sce_sys/livearea/contents/startup.png
         FILE assets/vita/livearea/contents/template.xml sce_sys/livearea/contents/template.xml
+        # TODO: replace some of this with folder copies or something
         FILE assets/assetlist.json assets/assetlist.json
         FILE assets/fonts/list.json assets/fonts/list.json
         FILE assets/fonts/SCP/LICENSE.md assets/fonts/SCP/LICENSE.md
@@ -96,7 +98,8 @@ else()
     # Install executables
     install(TARGETS ${PROJECT_NAME} DESTINATION bin)
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND "${CMAKE_COMMAND}" -E copy_directory
-            "../assets/"
-            "../bin/assets/")
+        COMMAND "${CMAKE_COMMAND}" -E copy_directory
+                "../assets/"
+                "../bin/assets/")
+    # TODO: remove the PSVita assets that get copied on build here
 endif()

@@ -3,6 +3,7 @@
 void loadingState::onInit()
 {
     AssetLoader::load("./assets/assetlist.json");
+    AssetLoader::start();
 }
 
 void loadingState::onDestroy()
@@ -29,17 +30,13 @@ void loadingState::update(double dt)
     // Update scene
     this -> root -> executeAll("update");
 
-    // Show percentage if something loaded
-    if(AssetLoader::getPercentage() > 0.1)
-        showSimpleMessageBox("Error", Utils::to_string<double>(100 * AssetLoader::getPercentage()) + "%", SDL_MESSAGEBOX_ERROR, Window::getInstance().getSDL());
-
-    // Go to main scene
+    // Go to main scene after waiting for thread to stop
     if(AssetLoader::getPercentage() == 1)
     {
+        AssetLoader::finish();
         GameManager::popState();
         GameManager::pushState(new mainState());
     }
-
 
     // Toggle fullscreen
     if(Input::isKeyPressed(SDLK_F11))

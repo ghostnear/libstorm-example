@@ -4,7 +4,7 @@
 #include <libstorm.hpp>
 #include <prefabs/all.hpp>
 #include "mainState.hpp"
-#include "../nodes/all.hpp"
+#include "../nodes/loadingState/all.hpp"
 
 using namespace Storm;
 

@@ -3,7 +3,7 @@
 
 #include <libstorm.hpp>
 #include <prefabs/all.hpp>
-#include "../nodes/all.hpp"
+#include "../nodes/mainState/all.hpp"
 
 using namespace Storm;
 

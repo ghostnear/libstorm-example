@@ -3,10 +3,7 @@
 void mainState::onInit()
 {
     scrollingRectanglesConfig cfg;
-    this -> root -> addChild(new scrollingRectangles(cfg), "test");
-
-    TextNodeConfig txtcfg;
-    this -> root -> addChild(new TextNode(txtcfg, "<fps>"), "fps_text");
+    this -> root -> addChild(new scrollingRectangles(cfg), "blue_rectangles");
 }
 
 void mainState::onDestroy()
@@ -32,9 +29,6 @@ void mainState::update(double dt)
 
     // Update scene
     this -> root -> executeAll("update");
-
-    // Update fps text
-    // TODO
 
     // Toggle fullscreen
     if(Input::isKeyPressed(SDLK_F11))
