@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
     GameManager::limitFPS(160);
 #endif
 
-    GameManager::pushState(new mainState());
+    GameManager::pushState(new loadingState());
 
     // Main loop
     while(!Window::shouldClose() && GameManager::isRunning())
