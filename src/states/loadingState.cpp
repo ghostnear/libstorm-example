@@ -2,6 +2,9 @@
 
 void loadingState::onInit()
 {
+    loadingBarConfig cfg;
+    this -> root -> addChild(new loadingBar(cfg), "loading_bar");
+
     AssetLoader::load("./assets/assetlist.json");
     AssetLoader::start();
 }

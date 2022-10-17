@@ -1,6 +1,14 @@
 [
     {
         "type": "font",
+        "name": "font_default",
+        "path": "SCP/SourceCodePro-Light.otf",
+        "data": {
+            "sizes": [12]
+        }
+    },
+    {
+        "type": "font",
         "name": "font_sourcecode_light",
         "path": "SCP/SourceCodePro-Light.otf",
         "data": {
