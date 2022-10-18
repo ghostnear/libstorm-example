@@ -6,7 +6,7 @@ void mainState::onInit()
     this -> root -> addChild(new scrollingRectangles(cfg), "blue_rectangles");
 
     TextNodeConfig textCFG;
-    textCFG.initialText = "Hello World!";
+    textCFG.initialText = "<fps>";
     textCFG.size = 32;
     this -> root -> addChild(new TextNode(textCFG), "text");
 }
