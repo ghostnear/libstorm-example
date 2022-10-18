@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 #ifdef BUILD_TYPE_VITA
     GameManager::limitFPS(60);
 #else
-    GameManager::limitFPS(160);
+    GameManager::limitFPS(144);
 #endif
 
     GameManager::pushState(new loadingState());

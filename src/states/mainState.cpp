@@ -5,10 +5,9 @@ void mainState::onInit()
     scrollingRectanglesConfig cfg;
     this -> root -> addChild(new scrollingRectangles(cfg), "blue_rectangles");
 
-    TextNodeConfig textCFG;
-    textCFG.initialText = "<fps>";
-    textCFG.size = 32;
-    this -> root -> addChild(new TextNode(textCFG), "text");
+    fpsTextConfig fpsTextcfg;
+    fpsTextcfg.textcfg.size = 32;
+    this -> root -> addChild(new fpsText(fpsTextcfg), "fps_text");
 }
 
 void mainState::onDestroy()

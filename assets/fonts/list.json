@@ -2,7 +2,7 @@
     {
         "type": "font",
         "name": "font_default",
-        "path": "SCP/SourceCodePro-Light.otf",
+        "path": "SCP/SourceCodePro-SemiboldIt.otf",
         "data": {
             "sizes": [12]
         }
