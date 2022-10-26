@@ -46,6 +46,7 @@ set(
     "src/states/loadingState.cpp"
     "src/states/mainState.cpp"
     "src/nodes/mainState/fpsText.cpp"
+    "src/nodes/mainState/mainText.cpp"
     "src/nodes/mainState/scrollingRectangles.cpp"
     "src/nodes/loadingState/loadingBar.cpp"
 )

@@ -8,6 +8,9 @@ void mainState::onInit()
     fpsTextConfig fpsTextcfg;
     fpsTextcfg.textcfg.size = 32;
     this -> root -> addChild(new fpsText(fpsTextcfg), "fps_text");
+
+    mainTextConfig config;
+    this -> root -> addChild(new mainText(config), "main_text");
 }
 
 void mainState::onDestroy()
