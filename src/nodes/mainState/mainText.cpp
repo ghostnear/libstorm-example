@@ -12,7 +12,7 @@ void mainTextUpdate(Node* slf)
     auto ratio = 1.0 * winSize.x / winSize.y;
 
     auto text_size = slf -> getComponent<size_t>("text_size");
-    size_t new_value = (size_t)(std::min(winSize.x, winSize.y) / 480.0 * 32);
+    size_t new_value = (size_t)(std::min(winSize.x, winSize.y) / 540.0 * 128);
     if(new_value != *text_size)
     {
         *text_size = new_value;
@@ -34,14 +34,28 @@ void mainTextUpdate(Node* slf)
 mainText::mainText(mainTextConfig config) : TextNode(config.textcfg)
 {
     // Set stuff to a desired value to make all look nice
-    auto text = this -> getComponent<std::string>("text");
-    *text = "LibStorm";
-    auto text_offset = this -> getComponent<Vec2<double>>("text_offset");
-    text_offset -> x = 0.5;
-    text_offset -> y = 0.5;
+    this -> setComponent<std::string>(
+        "text",
+        new std::string("LibStorm"),
+        true
+    );
+    this -> setComponent<Vec2<double>>(
+        "text_offset",
+        new Vec2<double>{
+            .x = 0.5,
+            .y = 0.5
+        },
+        true
+    );
 
     // Init values
-    this -> addComponent<double>(new double(config.scale), "mainText_scaling");
-    this -> addComponent<Vec2<double>>(new Vec2<double>(config.padding), "mainText_padding");
+    this -> addComponent<double>(
+        "mainText_scaling",
+        new double(config.scale)
+    );
+    this -> addComponent<Vec2<double>>(
+        "mainText_padding",
+        new Vec2<double>(config.padding)
+    );
     this -> addFunction(mainTextUpdate, "update");
 }

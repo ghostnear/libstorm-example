@@ -2,25 +2,16 @@
     {
         "type": "font",
         "name": "font_default",
-        "path": "SCP/SourceCodePro-SemiboldIt.otf",
-        "data": {
-            "sizes": [12]
-        }
+        "path": "SCP/SourceCodePro-SemiboldIt.otf"
     },
     {
         "type": "font",
         "name": "font_sourcecode_light",
-        "path": "SCP/SourceCodePro-Light.otf",
-        "data": {
-            "sizes": [12, 15, 17]
-        }
+        "path": "SCP/SourceCodePro-Light.otf"
     },
     {
         "type": "font",
         "name": "font_sourcecode_semibold",
-        "path": "SCP/SourceCodePro-SemiboldIt.otf",
-        "data": {
-            "sizes": [12, 15, 17]
-        }
+        "path": "SCP/SourceCodePro-SemiboldIt.otf"
     }
 ]

@@ -35,11 +35,26 @@ void rectangleChangeOffset(Node* slf)
 
 scrollingRectangles::scrollingRectangles(scrollingRectanglesConfig config)
 {
-    this -> addComponent<double>(new double(0), "offset");
-    this -> addComponent<double>(new double(config.speed), "speed");
-    this -> addComponent<double>(new double(config.size), "size");
-    this -> addComponent<SDL_Color>(new SDL_Color(config.primary), "primary_color");
-    this -> addComponent<SDL_Color>(new SDL_Color(config.secondary), "secondary_color");
+    this -> addComponent<double>(
+        "offset",
+        new double(0)
+    );
+    this -> addComponent<double>(
+        "speed",
+        new double(config.speed)
+    );
+    this -> addComponent<double>(
+        "size",
+        new double(config.size)
+    );
+    this -> addComponent<SDL_Color>(
+        "primary_color",
+        new SDL_Color(config.primary)
+    );
+    this -> addComponent<SDL_Color>(
+        "secondary_color",
+        new SDL_Color(config.secondary)
+    );
     this -> addFunction(rectangleDraw, "draw");
     this -> addFunction(rectangleChangeOffset, "update");
 }

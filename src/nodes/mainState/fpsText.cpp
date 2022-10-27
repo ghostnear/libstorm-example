@@ -31,9 +31,18 @@ void fpsTextDraw(Node* slf)
 
 fpsText::fpsText(fpsTextConfig config) : TextNode(config.textcfg)
 {
-    this -> addComponent<size_t>(new size_t(0), "frame_count");
-    this -> addComponent<double>(new double(0.0), "update_timer");
-    this -> addComponent<double>(new double(config.update_rate), "update_freq");
+    this -> addComponent<size_t>(
+        "frame_count",
+        new size_t(0)
+    );
+    this -> addComponent<double>(
+        "update_timer",
+        new double(0)
+    );
+    this -> addComponent<double>(
+        "update_freq",
+        new double(config.update_rate)
+    );
     this -> addFunction(fpsTextDraw, "draw");
     this -> addFunction(fpsTextUpdate, "update");
 }

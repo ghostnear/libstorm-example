@@ -10,6 +10,7 @@ void loadingBarDraw(Node* slf)
     auto w_size = Window::getSize();
     
     Graphics::setColor(secondary_color);
+    // TODO: stop using the stack
     SDL_Rect r = {
         .x = int(padding * w_size.x),
         .y = int((1 - 3 * padding) * w_size.y),
@@ -25,9 +26,18 @@ void loadingBarDraw(Node* slf)
 
 loadingBar::loadingBar(loadingBarConfig config)
 {
-    this -> addComponent<double>(new double(config.padding), "padding");
-    this -> addComponent<SDL_Color>(new SDL_Color(config.primary), "primary_color");
-    this -> addComponent<SDL_Color>(new SDL_Color(config.secondary), "secondary_color");
+    this -> addComponent<double>(
+        "padding",
+        new double(config.padding)
+    );
+    this -> addComponent<SDL_Color>(
+        "primary_color",
+        new SDL_Color(config.primary)
+    );
+    this -> addComponent<SDL_Color>(
+        "secondary_color",
+        new SDL_Color(config.secondary)
+    );
     this -> addFunction(loadingBarDraw, "draw");
 }
 
