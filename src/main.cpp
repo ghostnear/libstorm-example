@@ -1,5 +1,5 @@
 #include <libStorm.hpp>
-#include "states/states.hpp"
+#include "states/all.hpp"
 
 using namespace Storm;
 

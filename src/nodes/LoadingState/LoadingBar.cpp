@@ -4,9 +4,9 @@
 
 void loadingBarDraw(Node* slf)
 {
-    auto primary_color = *(slf -> getComponent<SDL_Color>("primary_color"));
-    auto secondary_color = *(slf -> getComponent<SDL_Color>("secondary_color"));
-    auto padding = *(slf -> getComponent<double>("padding"));
+    auto primary_color = *(slf->getComponent<SDL_Color>("primary_color"));
+    auto secondary_color = *(slf->getComponent<SDL_Color>("secondary_color"));
+    auto padding = *(slf->getComponent<double>("padding"));
     auto w_size = Window::getSize();
     
     Graphics::setColor(secondary_color);
@@ -26,19 +26,19 @@ void loadingBarDraw(Node* slf)
 
 LoadingBar::LoadingBar(LoadingBarConfig config)
 {
-    this -> addComponent<double>(
+    addComponent<double>(
         "padding",
         new double(config.padding)
     );
-    this -> addComponent<SDL_Color>(
+    addComponent<SDL_Color>(
         "primary_color",
         new SDL_Color(config.primary)
     );
-    this -> addComponent<SDL_Color>(
+    addComponent<SDL_Color>(
         "secondary_color",
         new SDL_Color(config.secondary)
     );
-    this -> addFunction(loadingBarDraw, "draw");
+    addFunction(loadingBarDraw, "draw");
 }
 
 #undef renderer

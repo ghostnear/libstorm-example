@@ -1,19 +1,19 @@
 #include "MainState.hpp"
 
-void MainState::onInit()
+void MainState::on_init()
 {
-    scrollingRectanglesConfig cfg;
-    this -> root -> addChild(new scrollingRectangles(cfg), "blue_rectangles");
+    ScrollingRectanglesConfig cfg;
+    root->addChild(new ScrollingRectangles(cfg), "blue_rectangles");
 
     FPSTextConfig fpsTextcfg;
     fpsTextcfg.textcfg.size = 32;
-    this -> root -> addChild(new FPSText(fpsTextcfg), "fps_text");
+    root->addChild(new FPSText(fpsTextcfg), "fps_text");
 
     MainTextConfig config;
-    this -> root -> addChild(new MainText(config), "main_text");
+    root->addChild(new MainText(config), "main_text");
 }
 
-void MainState::onDestroy()
+void MainState::on_destroy()
 {
 
 }
@@ -23,7 +23,7 @@ void MainState::draw()
     Graphics::clear(50, 100, 155);
 
     // Draw scene
-    this -> root -> executeAll("draw");
+    root->executeAll("draw");
 
     Graphics::update();
 }
@@ -35,7 +35,7 @@ void MainState::update(double dt)
         Window::close();
 
     // Update scene
-    this -> root -> executeAll("update");
+    root->executeAll("update");
 
     // Toggle fullscreen
     if(Input::isKeyPressed(SDLK_F11))

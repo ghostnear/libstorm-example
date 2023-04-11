@@ -1,15 +1,15 @@
 #include "LoadingState.hpp"
 
-void LoadingState::onInit()
+void LoadingState::on_init()
 {
     LoadingBarConfig cfg;
-    this -> root -> addChild(new LoadingBar(cfg), "loading_bar");
+    root->addChild(new LoadingBar(cfg), "loading_bar");
 
     AssetLoader::load("./assets/assetlist.json");
     AssetLoader::start();
 }
 
-void LoadingState::onDestroy()
+void LoadingState::on_destroy()
 {
 
 }
@@ -19,7 +19,7 @@ void LoadingState::draw()
     Graphics::clear(0, 0, 0);
 
     // Draw scene
-    this -> root -> executeAll("draw");
+    root->executeAll("draw");
 
     Graphics::update();
 }
@@ -31,7 +31,7 @@ void LoadingState::update(double dt)
         Window::close();
 
     // Update scene
-    this -> root -> executeAll("update");
+    root->executeAll("update");
 
     // Go to main scene after waiting for thread to stop
     if(AssetLoader::getPercentage() == 1)

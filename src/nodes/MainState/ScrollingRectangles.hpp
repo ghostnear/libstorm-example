@@ -5,7 +5,7 @@
 
 using namespace Storm;
 
-struct scrollingRectanglesConfig
+struct ScrollingRectanglesConfig
 {
     double size = 60;
     double speed = 60;
@@ -13,11 +13,11 @@ struct scrollingRectanglesConfig
     SDL_Color secondary = {.r = 50, .g = 50, .b = 160};
 };
 
-class scrollingRectangles : public Node
+class ScrollingRectangles : public Node
 {
 public:
     // Constructor
-    scrollingRectangles(scrollingRectanglesConfig config);
+    ScrollingRectangles(ScrollingRectanglesConfig config);
 };
 
 #endif

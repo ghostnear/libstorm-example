@@ -4,10 +4,10 @@
 
 void rectangleDraw(Node* slf)
 {
-    auto primary_color = *(slf -> getComponent<SDL_Color>("primary_color"));
-    auto secondary_color = *(slf -> getComponent<SDL_Color>("secondary_color"));
-    auto offset = *(slf -> getComponent<double>("offset"));
-    auto size = *(slf -> getComponent<double>("size"));
+    auto primary_color = *(slf->getComponent<SDL_Color>("primary_color"));
+    auto secondary_color = *(slf->getComponent<SDL_Color>("secondary_color"));
+    auto offset = *(slf->getComponent<double>("offset"));
+    auto size = *(slf->getComponent<double>("size"));
     auto w_size = Window::getSize();
     for(size_t i = 0; i <= size_t(w_size.x / size) + 1; i++)
         for(size_t j = 0; j <= size_t(w_size.y / size) + 1; j++)
@@ -25,38 +25,38 @@ void rectangleDraw(Node* slf)
 
 void rectangleChangeOffset(Node* slf)
 {
-    auto offset = slf -> getComponent<double>("offset");
-    auto size = *(slf -> getComponent<double>("size"));
-    auto speed = *(slf -> getComponent<double>("speed"));
+    auto offset = slf->getComponent<double>("offset");
+    auto size = *(slf->getComponent<double>("size"));
+    auto speed = *(slf->getComponent<double>("speed"));
     *offset = *offset - GameManager::getDeltaTime() * speed;
     while(*offset <= -size)
         *offset = *offset + size;
 }
 
-scrollingRectangles::scrollingRectangles(scrollingRectanglesConfig config)
+ScrollingRectangles::ScrollingRectangles(ScrollingRectanglesConfig config)
 {
-    this -> addComponent<double>(
+    addComponent<double>(
         "offset",
         new double(0)
     );
-    this -> addComponent<double>(
+    addComponent<double>(
         "speed",
         new double(config.speed)
     );
-    this -> addComponent<double>(
+    addComponent<double>(
         "size",
         new double(config.size)
     );
-    this -> addComponent<SDL_Color>(
+    addComponent<SDL_Color>(
         "primary_color",
         new SDL_Color(config.primary)
     );
-    this -> addComponent<SDL_Color>(
+    addComponent<SDL_Color>(
         "secondary_color",
         new SDL_Color(config.secondary)
     );
-    this -> addFunction(rectangleDraw, "draw");
-    this -> addFunction(rectangleChangeOffset, "update");
+    addFunction(rectangleDraw, "draw");
+    addFunction(rectangleChangeOffset, "update");
 }
 
 #undef window

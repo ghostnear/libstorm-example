@@ -21,7 +21,7 @@ if(BUILD_TARGET MATCHES "VITA")
     # unique string of developer and Y = a unique number for this app
     set(VITA_TITLEID  "STRM00000")
     # Optional version string to show in LiveArea's more info screen
-    set(VITA_VERSION  "01.00")
+    set(VITA_VERSION  "00.10")
 
 else()
 
