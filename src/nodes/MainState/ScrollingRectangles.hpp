@@ -1,7 +1,7 @@
 #ifndef LIBSTORM_EXAMPLE_SCROLLING_RECTANGLES_HPP
 #define LIBSTORM_EXAMPLE_SCROLLING_RECTANGLES_HPP
 
-#include <libstorm.hpp>
+#include <libStorm.hpp>
 
 using namespace Storm;
 

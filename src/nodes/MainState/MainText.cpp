@@ -1,4 +1,4 @@
-#include "mainText.hpp"
+#include "MainText.hpp"
 
 void mainTextUpdate(Node* slf)
 {
@@ -16,7 +16,7 @@ void mainTextUpdate(Node* slf)
     if(new_value != *text_size)
     {
         *text_size = new_value;
-        mainText::redrawTextNode(slf);
+        MainText::redrawTextNode(slf);
     }
     
     if(winSize.x > winSize.y)
@@ -31,7 +31,7 @@ void mainTextUpdate(Node* slf)
     }
 }
 
-mainText::mainText(mainTextConfig config) : TextNode(config.textcfg)
+MainText::MainText(MainTextConfig config) : TextNode(config.textcfg)
 {
     // Set stuff to a desired value to make all look nice
     this -> setComponent<std::string>(

@@ -1,20 +1,20 @@
-#include "loadingState.hpp"
+#include "LoadingState.hpp"
 
-void loadingState::onInit()
+void LoadingState::onInit()
 {
-    loadingBarConfig cfg;
-    this -> root -> addChild(new loadingBar(cfg), "loading_bar");
+    LoadingBarConfig cfg;
+    this -> root -> addChild(new LoadingBar(cfg), "loading_bar");
 
     AssetLoader::load("./assets/assetlist.json");
     AssetLoader::start();
 }
 
-void loadingState::onDestroy()
+void LoadingState::onDestroy()
 {
 
 }
 
-void loadingState::draw()
+void LoadingState::draw()
 {
     Graphics::clear(0, 0, 0);
 
@@ -24,7 +24,7 @@ void loadingState::draw()
     Graphics::update();
 }
 
-void loadingState::update(double dt)
+void LoadingState::update(double dt)
 {
     // Press escape to close window
     if(Input::isKeyReleased(SDLK_ESCAPE))
@@ -38,7 +38,7 @@ void loadingState::update(double dt)
     {
         AssetLoader::finish();
         GameManager::popState();
-        GameManager::pushState(new mainState());
+        GameManager::pushState(new MainState());
     }
 
     // Toggle fullscreen

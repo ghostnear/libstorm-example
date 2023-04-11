@@ -1,23 +1,23 @@
 #ifndef LIBSTORM_EXAMPLE_FPS_TEXT_HPP
 #define LIBSTORM_EXAMPLE_FPS_TEXT_HPP
 
-#include <libstorm.hpp>
+#include <libStorm.hpp>
 #include <prefabs/all.hpp>
 
 using namespace Storm;
 
-struct fpsTextConfig
+struct FPSTextConfig
 {
     // Denotes how often does the framerate update, default is once per second
     double update_rate = 1.0;
-    TextNodeConfig textcfg;
+    Prefabs::TextNodeConfig textcfg;
 };
 
-class fpsText : public TextNode
+class FPSText : public Prefabs::TextNode
 {
 public:
     // Constructor
-    fpsText(fpsTextConfig config);
+    FPSText(FPSTextConfig config);
 };
 
 #endif

@@ -1,4 +1,4 @@
-#include "loadingBar.hpp"
+#include "LoadingBar.hpp"
 
 #define renderer Graphics::getSDL()
 
@@ -24,7 +24,7 @@ void loadingBarDraw(Node* slf)
     SDL_RenderFillRect(renderer, &r);
 }
 
-loadingBar::loadingBar(loadingBarConfig config)
+LoadingBar::LoadingBar(LoadingBarConfig config)
 {
     this -> addComponent<double>(
         "padding",

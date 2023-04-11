@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.2)
 
 # PSvita specifics
 if(BUILD_TARGET MATCHES "VITA")
+
     # VitaSDK is required
     if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
         if(DEFINED ENV{VITASDK})
@@ -20,19 +21,17 @@ if(BUILD_TARGET MATCHES "VITA")
     # unique string of developer and Y = a unique number for this app
     set(VITA_TITLEID  "STRM00000")
     # Optional version string to show in LiveArea's more info screen
-    set(VITA_VERSION  "00.01")
+    set(VITA_VERSION  "01.00")
+
 else()
-    if(BUILD_TARGET MATCHES "ANDROID")
-        SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -frtti")
-        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frtti")
-        SET(CMAKE_ANDROID_GUI TRUE)
-    endif()
+
     # Project output path for install()
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin/)
+
 endif()
 
 add_compile_definitions(BUILD_TYPE_${BUILD_TARGET})
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
 # Project metadata
 project(exampleApp)
@@ -40,15 +39,13 @@ project(exampleApp)
 # Project dependencies
 add_subdirectory(external)
 
-set(
+file(
+    GLOB
     EXECUTABLE_FILES
-    "src/main.cpp"
-    "src/states/loadingState.cpp"
-    "src/states/mainState.cpp"
-    "src/nodes/mainState/fpsText.cpp"
-    "src/nodes/mainState/mainText.cpp"
-    "src/nodes/mainState/scrollingRectangles.cpp"
-    "src/nodes/loadingState/loadingBar.cpp"
+        "src/*.cpp"
+        "src/states/*.cpp"
+        "src/nodes/MainState/*.cpp"
+        "src/nodes/LoadingState/*.cpp"
 )
 
 # Project core
@@ -71,6 +68,12 @@ target_link_libraries(
         libStorm
 )
 
+target_compile_options(
+    ${PROJECT_NAME}
+    PUBLIC
+        -Wall
+)
+
 # Disables command prompt on windows
 if(BUILD_TARGET MATCHES "WIN")
     target_link_options(${PROJECT_NAME} PRIVATE -mwindows)
@@ -82,7 +85,10 @@ if(BUILD_TARGET MATCHES "VITA")
     vita_create_self(${PROJECT_NAME}.self ${PROJECT_NAME})
     # The FILE directive lets you add additional files to the VPK, the syntax is
     # FILE src_path dst_path_in_vpk. In this case, we add the LiveArea paths.
-    vita_create_vpk(${PROJECT_NAME}.vpk ${VITA_TITLEID} ${PROJECT_NAME}.self
+    vita_create_vpk(
+        ${PROJECT_NAME}.vpk
+        ${VITA_TITLEID}
+        ${PROJECT_NAME}.self
         VERSION ${VITA_VERSION}
         NAME ${VITA_APP_NAME}
         # Vita System files need to be separately set

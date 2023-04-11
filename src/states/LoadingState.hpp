@@ -1,14 +1,14 @@
 #ifndef GAME_LOADINGSTATE_HPP
 #define GAME_LOADINGSTATE_HPP
 
-#include <libstorm.hpp>
-#include <prefabs/all.hpp>
-#include "mainState.hpp"
-#include "../nodes/loadingState/all.hpp"
+#include <libStorm.hpp>
+
+#include "MainState.hpp"
+#include "../nodes/LoadingState/all.hpp"
 
 using namespace Storm;
 
-class loadingState : public State
+class LoadingState : public State
 {
 public:
     void onInit() override;

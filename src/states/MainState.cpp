@@ -1,24 +1,24 @@
-#include "mainState.hpp"
+#include "MainState.hpp"
 
-void mainState::onInit()
+void MainState::onInit()
 {
     scrollingRectanglesConfig cfg;
     this -> root -> addChild(new scrollingRectangles(cfg), "blue_rectangles");
 
-    fpsTextConfig fpsTextcfg;
+    FPSTextConfig fpsTextcfg;
     fpsTextcfg.textcfg.size = 32;
-    this -> root -> addChild(new fpsText(fpsTextcfg), "fps_text");
+    this -> root -> addChild(new FPSText(fpsTextcfg), "fps_text");
 
-    mainTextConfig config;
-    this -> root -> addChild(new mainText(config), "main_text");
+    MainTextConfig config;
+    this -> root -> addChild(new MainText(config), "main_text");
 }
 
-void mainState::onDestroy()
+void MainState::onDestroy()
 {
 
 }
 
-void mainState::draw()
+void MainState::draw()
 {
     Graphics::clear(50, 100, 155);
 
@@ -28,7 +28,7 @@ void mainState::draw()
     Graphics::update();
 }
 
-void mainState::update(double dt)
+void MainState::update(double dt)
 {
     // Press escape to close window
     if(Input::isKeyReleased(SDLK_ESCAPE))

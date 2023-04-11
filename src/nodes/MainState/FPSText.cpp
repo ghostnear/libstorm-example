@@ -1,4 +1,4 @@
-#include "fpsText.hpp"
+#include "FPSText.hpp"
 
 void fpsTextUpdate(Node* slf)
 {
@@ -14,7 +14,7 @@ void fpsTextUpdate(Node* slf)
         *frameCount = 0;
 
         // Force the redrawing
-        fpsText::redrawTextNode(slf);
+        FPSText::redrawTextNode(slf);
 
         // Clear the timings
         while(*updateTimer >= updateFreq)
@@ -26,10 +26,10 @@ void fpsTextDraw(Node* slf)
 {
     auto frameCount = slf -> getComponent<size_t>("frame_count");
     *frameCount = *frameCount + 1;
-    fpsText::textNodeDraw(slf);
+    FPSText::textNodeDraw(slf);
 }
 
-fpsText::fpsText(fpsTextConfig config) : TextNode(config.textcfg)
+FPSText::FPSText(FPSTextConfig config) : TextNode(config.textcfg)
 {
     this -> addComponent<size_t>(
         "frame_count",

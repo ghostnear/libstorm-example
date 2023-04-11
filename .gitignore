@@ -4,6 +4,7 @@ build/
 
 # Ignore vscode specific files
 .vscode/
+.cache/
 
 # Ignore cmake files
 CMakeFiles/

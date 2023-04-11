@@ -1,4 +1,4 @@
-#include "scrollingRectangles.hpp"
+#include "ScrollingRectangles.hpp"
 
 #define renderer Graphics::getSDL()
 

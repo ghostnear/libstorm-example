@@ -1,12 +1,11 @@
 #ifndef LIBSTORM_EXAMPLE_MAIN_TEXT_HPP
 #define LIBSTORM_EXAMPLE_MAIN_TEXT_HPP
 
-#include <libstorm.hpp>
-#include <prefabs/all.hpp>
+#include <libStorm.hpp>
 
 using namespace Storm;
 
-struct mainTextConfig
+struct MainTextConfig
 {
     // Denotes how often does the framerate update, default is once per second
     Vec2<double> padding = {
@@ -14,14 +13,14 @@ struct mainTextConfig
         .y = 0.5
     };
     double scale = 0.5;
-    TextNodeConfig textcfg;
+    Prefabs::TextNodeConfig textcfg;
 };
 
-class mainText : public TextNode
+class MainText : public Prefabs::TextNode
 {
 public:
     // Constructor
-    mainText(mainTextConfig config);
+    MainText(MainTextConfig config);
 };
 
 #endif

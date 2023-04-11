@@ -1,4 +1,4 @@
-#include <libstorm.hpp>
+#include <libStorm.hpp>
 #include "states/states.hpp"
 
 using namespace Storm;
@@ -17,13 +17,14 @@ int main(int argc, char* argv[])
 
     // Push the default state to the manager
     // TODO: replace this with a config system to make everything customizable
+    // TODO: also make it actually work as it limits nothing.
 #ifdef BUILD_TYPE_VITA
     GameManager::limitFPS(60);
 #else
     GameManager::limitFPS(144);
 #endif
 
-    GameManager::pushState(new loadingState());
+    GameManager::pushState(new LoadingState());
 
     // Main loop
     while(!Window::shouldClose() && GameManager::isRunning())

@@ -1,2 +1,6 @@
+#!/bin/sh
+
 # Run built executable (change name here)
-../bin/exampleApp
+cd ..
+cd bin || exit
+./exampleApp

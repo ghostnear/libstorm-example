@@ -1,13 +1,13 @@
 #ifndef GAME_MAINSTATE_HPP
 #define GAME_MAINSTATE_HPP
 
-#include <libstorm.hpp>
-#include <prefabs/all.hpp>
-#include "../nodes/mainState/all.hpp"
+#include <libStorm.hpp>
+
+#include "../nodes/MainState/all.hpp"
 
 using namespace Storm;
 
-class mainState : public State
+class MainState : public State
 {
 public:
     void onInit() override;
