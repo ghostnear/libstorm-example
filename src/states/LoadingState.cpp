@@ -1,9 +1,11 @@
 #include "LoadingState.hpp"
 
+using namespace Storm;
+
 void LoadingState::on_init()
 {
     LoadingBarConfig cfg;
-    root->addChild(new LoadingBar(cfg), "loading_bar");
+    root->add_child(new LoadingBar(cfg), "loading_bar");
 
     AssetLoader::load("./assets/assetlist.json");
     AssetLoader::start();
@@ -19,7 +21,7 @@ void LoadingState::draw()
     Graphics::clear(0, 0, 0);
 
     // Draw scene
-    root->executeAll("draw");
+    root->execute_all("draw");
 
     Graphics::update();
 }
@@ -31,22 +33,22 @@ void LoadingState::update(double dt)
         Window::close();
 
     // Update scene
-    root->executeAll("update");
+    root->execute_all("update");
 
     // Go to main scene after waiting for thread to stop
-    if(AssetLoader::getPercentage() == 1)
+    if(AssetLoader::get_percentage() == 1)
     {
         AssetLoader::finish();
-        GameManager::popState();
-        GameManager::pushState(new MainState());
+        GameManager::pop_state();
+        GameManager::push_state(new MainState());
     }
 
     // Toggle fullscreen
     if(Input::isKeyPressed(SDLK_F11))
     {
-        if(!Window::isFullscreen())
-            Window::setFullscreen(SDL_WINDOW_FULLSCREEN_DESKTOP);
+        if(!Window::is_fullscreen())
+            Window::set_fullscreen(SDL_WINDOW_FULLSCREEN_DESKTOP);
         else
-            Window::setFullscreen(0);
+            Window::set_fullscreen(0);
     }
 }

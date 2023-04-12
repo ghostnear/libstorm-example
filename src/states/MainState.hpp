@@ -5,9 +5,7 @@
 
 #include "../nodes/MainState/all.hpp"
 
-using namespace Storm;
-
-class MainState : public State
+class MainState : public Storm::State
 {
 public:
     void on_init() override;

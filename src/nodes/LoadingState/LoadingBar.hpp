@@ -3,8 +3,6 @@
 
 #include <libStorm.hpp>
 
-using namespace Storm;
-
 struct LoadingBarConfig
 {
     double padding = 0.05;
@@ -12,7 +10,7 @@ struct LoadingBarConfig
     SDL_Color secondary = {.r = 0x33, .g = 0x33, .b = 0x33};
 };
 
-class LoadingBar : public Node
+class LoadingBar : public Storm::Node
 {
 public:
     // Constructor

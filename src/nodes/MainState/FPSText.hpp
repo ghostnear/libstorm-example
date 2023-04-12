@@ -4,16 +4,14 @@
 #include <libStorm.hpp>
 #include <prefabs/all.hpp>
 
-using namespace Storm;
-
 struct FPSTextConfig
 {
     // Denotes how often does the framerate update, default is once per second
-    double update_rate = 1.0;
-    Prefabs::TextNodeConfig textcfg;
+    double updateRate = 1.0;
+    Storm::Prefabs::TextNodeConfig textCfg;
 };
 
-class FPSText : public Prefabs::TextNode
+class FPSText : public Storm::Prefabs::TextNode
 {
 public:
     // Constructor

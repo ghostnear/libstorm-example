@@ -6,9 +6,7 @@
 #include "MainState.hpp"
 #include "../nodes/LoadingState/all.hpp"
 
-using namespace Storm;
-
-class LoadingState : public State
+class LoadingState : public Storm::State
 {
 public:
     void on_init() override;

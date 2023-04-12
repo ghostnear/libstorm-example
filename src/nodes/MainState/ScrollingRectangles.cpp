@@ -1,18 +1,20 @@
 #include "ScrollingRectangles.hpp"
 
-#define renderer Graphics::getSDL()
+using namespace Storm;
 
-void rectangleDraw(Node* slf)
+#define renderer Graphics::get_SDL()
+
+void rectangle_draw(Node* slf)
 {
-    auto primary_color = *(slf->getComponent<SDL_Color>("primary_color"));
-    auto secondary_color = *(slf->getComponent<SDL_Color>("secondary_color"));
-    auto offset = *(slf->getComponent<double>("offset"));
-    auto size = *(slf->getComponent<double>("size"));
-    auto w_size = Window::getSize();
+    auto primary_color = *(slf->get_component<SDL_Color>("primary_color"));
+    auto secondary_color = *(slf->get_component<SDL_Color>("secondary_color"));
+    auto offset = *(slf->get_component<double>("offset"));
+    auto size = *(slf->get_component<double>("size"));
+    auto w_size = Window::get_size();
     for(size_t i = 0; i <= size_t(w_size.x / size) + 1; i++)
         for(size_t j = 0; j <= size_t(w_size.y / size) + 1; j++)
         {
-            Graphics::setColor((i + j) % 2 ? primary_color : secondary_color);
+            Graphics::set_color((i + j) % 2 ? primary_color : secondary_color);
             SDL_Rect r = {
                 .x = int(i * size + offset),
                 .y = int(j * size + offset),
@@ -23,40 +25,46 @@ void rectangleDraw(Node* slf)
         }
 }
 
-void rectangleChangeOffset(Node* slf)
+void rectangle_change_offset(Node* slf)
 {
-    auto offset = slf->getComponent<double>("offset");
-    auto size = *(slf->getComponent<double>("size"));
-    auto speed = *(slf->getComponent<double>("speed"));
-    *offset = *offset - GameManager::getDeltaTime() * speed;
+    auto offset = slf->get_component<double>("offset");
+    auto size = *(slf->get_component<double>("size"));
+    auto speed = *(slf->get_component<double>("speed"));
+    *offset = *offset - GameManager::get_delta_time() * speed;
     while(*offset <= -size)
         *offset = *offset + size;
 }
 
 ScrollingRectangles::ScrollingRectangles(ScrollingRectanglesConfig config)
 {
-    addComponent<double>(
+    add_component<double>(
         "offset",
         new double(0)
     );
-    addComponent<double>(
+    add_component<double>(
         "speed",
         new double(config.speed)
     );
-    addComponent<double>(
+    add_component<double>(
         "size",
         new double(config.size)
     );
-    addComponent<SDL_Color>(
+    add_component<SDL_Color>(
         "primary_color",
         new SDL_Color(config.primary)
     );
-    addComponent<SDL_Color>(
+    add_component<SDL_Color>(
         "secondary_color",
         new SDL_Color(config.secondary)
     );
-    addFunction(rectangleDraw, "draw");
-    addFunction(rectangleChangeOffset, "update");
+    add_function(
+        "draw",
+        rectangle_draw
+    );
+    add_function(
+        "update",
+        rectangle_change_offset
+    );
 }
 
 #undef window

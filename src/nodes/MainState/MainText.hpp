@@ -3,20 +3,18 @@
 
 #include <libStorm.hpp>
 
-using namespace Storm;
-
 struct MainTextConfig
 {
     // Denotes how often does the framerate update, default is once per second
-    Vec2<double> padding = {
+    Storm::Vec2<double> padding = {
         .x = 0.5,
         .y = 0.5
     };
     double scale = 0.5;
-    Prefabs::TextNodeConfig textcfg;
+    Storm::Prefabs::TextNodeConfig textCfg;
 };
 
-class MainText : public Prefabs::TextNode
+class MainText : public Storm::Prefabs::TextNode
 {
 public:
     // Constructor

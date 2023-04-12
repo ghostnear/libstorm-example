@@ -1,15 +1,17 @@
 #include "LoadingBar.hpp"
 
-#define renderer Graphics::getSDL()
+using namespace Storm;
 
-void loadingBarDraw(Node* slf)
+#define renderer Graphics::get_SDL()
+
+void loading_bar_draw(Node* slf)
 {
-    auto primary_color = *(slf->getComponent<SDL_Color>("primary_color"));
-    auto secondary_color = *(slf->getComponent<SDL_Color>("secondary_color"));
-    auto padding = *(slf->getComponent<double>("padding"));
-    auto w_size = Window::getSize();
+    auto primary_color = *(slf->get_component<SDL_Color>("primary_color"));
+    auto secondary_color = *(slf->get_component<SDL_Color>("secondary_color"));
+    auto padding = *(slf->get_component<double>("padding"));
+    auto w_size = Window::get_size();
     
-    Graphics::setColor(secondary_color);
+    Graphics::set_color(secondary_color);
     // TODO: stop using the stack
     SDL_Rect r = {
         .x = int(padding * w_size.x),
@@ -19,26 +21,29 @@ void loadingBarDraw(Node* slf)
     };
     SDL_RenderFillRect(renderer, &r);
 
-    Graphics::setColor(primary_color);
-    r.w = int(w_size.x * (1 - 2 * padding) * AssetLoader::getPercentage());
+    Graphics::set_color(primary_color);
+    r.w = int(w_size.x * (1 - 2 * padding) * AssetLoader::get_percentage());
     SDL_RenderFillRect(renderer, &r);
 }
 
 LoadingBar::LoadingBar(LoadingBarConfig config)
 {
-    addComponent<double>(
+    add_component<double>(
         "padding",
         new double(config.padding)
     );
-    addComponent<SDL_Color>(
+    add_component<SDL_Color>(
         "primary_color",
         new SDL_Color(config.primary)
     );
-    addComponent<SDL_Color>(
+    add_component<SDL_Color>(
         "secondary_color",
         new SDL_Color(config.secondary)
     );
-    addFunction(loadingBarDraw, "draw");
+    add_function(
+        "draw",
+        loading_bar_draw
+    );
 }
 
 #undef renderer

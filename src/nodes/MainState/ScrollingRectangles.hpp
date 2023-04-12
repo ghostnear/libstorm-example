@@ -3,8 +3,6 @@
 
 #include <libStorm.hpp>
 
-using namespace Storm;
-
 struct ScrollingRectanglesConfig
 {
     double size = 60;
@@ -13,7 +11,7 @@ struct ScrollingRectanglesConfig
     SDL_Color secondary = {.r = 50, .g = 50, .b = 160};
 };
 
-class ScrollingRectangles : public Node
+class ScrollingRectangles : public Storm::Node
 {
 public:
     // Constructor

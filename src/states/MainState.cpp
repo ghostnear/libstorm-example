@@ -1,16 +1,18 @@
 #include "MainState.hpp"
 
+using namespace Storm;
+
 void MainState::on_init()
 {
     ScrollingRectanglesConfig cfg;
-    root->addChild(new ScrollingRectangles(cfg), "blue_rectangles");
+    root->add_child(new ScrollingRectangles(cfg), "blue_rectangles");
 
     FPSTextConfig fpsTextcfg;
-    fpsTextcfg.textcfg.size = 32;
-    root->addChild(new FPSText(fpsTextcfg), "fps_text");
+    fpsTextcfg.textCfg.size = 32;
+    root->add_child(new FPSText(fpsTextcfg), "fps_text");
 
     MainTextConfig config;
-    root->addChild(new MainText(config), "main_text");
+    root->add_child(new MainText(config), "main_text");
 }
 
 void MainState::on_destroy()
@@ -23,7 +25,7 @@ void MainState::draw()
     Graphics::clear(50, 100, 155);
 
     // Draw scene
-    root->executeAll("draw");
+    root->execute_all("draw");
 
     Graphics::update();
 }
@@ -35,14 +37,14 @@ void MainState::update(double dt)
         Window::close();
 
     // Update scene
-    root->executeAll("update");
+    root->execute_all("update");
 
     // Toggle fullscreen
     if(Input::isKeyPressed(SDLK_F11))
     {
-        if(!Window::isFullscreen())
-            Window::setFullscreen(SDL_WINDOW_FULLSCREEN_DESKTOP);
+        if(!Window::is_fullscreen())
+            Window::set_fullscreen(SDL_WINDOW_FULLSCREEN_DESKTOP);
         else
-            Window::setFullscreen(0);
+            Window::set_fullscreen(0);
     }
 }

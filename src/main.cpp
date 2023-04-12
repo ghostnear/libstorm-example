@@ -13,21 +13,21 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
 
     // Set metadata
-    Window::setName("libStorm Example");
+    Window::set_name("libStorm Example");
 
     // Push the default state to the manager
     // TODO: replace this with a config system to make everything customizable
     // TODO: also make it actually work as it limits nothing.
-#ifdef BUILD_TYPE_VITA
+#ifdef VITA
     GameManager::limitFPS(60);
 #else
-    GameManager::limitFPS(144);
+    GameManager::limit_FPS(144);
 #endif
 
-    GameManager::pushState(new LoadingState());
+    GameManager::push_state(new LoadingState());
 
     // Main loop
-    while(!Window::shouldClose() && GameManager::isRunning())
+    while(!Window::should_close() && GameManager::is_running())
     {
         // Poll events
         Input::pollEvents();
@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
         GameManager::update();
 
         // Draw
-        if(!Window::isMinimized())
+        if(!Window::is_minimized())
             GameManager::draw();
     }
 
