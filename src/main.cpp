@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
     // TODO: replace this with a config system to make everything customizable
     // TODO: also make it actually work as it limits nothing.
 #ifdef VITA
-    GameManager::limitFPS(60);
+    GameManager::limit_FPS(60);
 #else
     GameManager::limit_FPS(144);
 #endif

@@ -17,9 +17,11 @@ if(BUILD_TARGET MATCHES "VITA")
     ## Configuration options for this app
     # Display name (under bubble in LiveArea)
     set(VITA_APP_NAME "libStorm Example")
+
     # Unique ID must be exactly 9 characters. Recommended: XXXXYYYYY where X =
     # unique string of developer and Y = a unique number for this app
     set(VITA_TITLEID  "STRM00000")
+
     # Optional version string to show in LiveArea's more info screen
     set(VITA_VERSION  "00.10")
 
@@ -104,11 +106,20 @@ if(BUILD_TARGET MATCHES "VITA")
         FILE assets/fonts/SCP/SourceCodePro-SemiboldIt.otf assets/fonts/SCP/SourceCodePro-SemiboldIt.otf
     )
 else()
-    # Install executables
+    # Install executables.
     install(TARGETS ${PROJECT_NAME} DESTINATION bin)
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND "${CMAKE_COMMAND}" -E copy_directory
-                "../assets/"
-                "../bin/assets/")
-    # TODO: remove the PSVita assets that get copied on build here
+
+    add_custom_command(
+        TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND "${CMAKE_COMMAND}" -E copy_directory_if_different
+            "../assets/"
+            "../bin/assets/"
+    )
+
+    # Remove Vita assets.
+    add_custom_command(
+        TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND "${CMAKE_COMMAND}" -E rm -rf
+            "../bin/assets/vita/"
+    )
 endif()
