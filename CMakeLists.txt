@@ -1,29 +1,21 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 2.8)
+
+# Project dependencies first.
+add_subdirectory(external)
 
 # PSvita specifics
 if(BUILD_TARGET MATCHES "VITA")
 
-    # VitaSDK is required
-    if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
-        if(DEFINED ENV{VITASDK})
-            set(CMAKE_TOOLCHAIN_FILE "$ENV{VITASDK}/share/vita.toolchain.cmake" CACHE PATH "toolchain file")
-        else()
-            message(FATAL_ERROR "Please define VITASDK to point to your SDK path!")
-        endif()
-    endif()
-
-    include("$ENV{VITASDK}/share/vita.cmake" REQUIRED)
-
     ## Configuration options for this app
     # Display name (under bubble in LiveArea)
-    set(VITA_APP_NAME "libStorm Example")
+    set(VITA_APP_NAME "Storm Test App")
 
     # Unique ID must be exactly 9 characters. Recommended: XXXXYYYYY where X =
     # unique string of developer and Y = a unique number for this app
     set(VITA_TITLEID  "STRM00000")
 
     # Optional version string to show in LiveArea's more info screen
-    set(VITA_VERSION  "00.10")
+    set(VITA_VERSION  "01.00")
 
 else()
 
@@ -32,14 +24,8 @@ else()
 
 endif()
 
-add_compile_definitions(${BUILD_TARGET})
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
-
 # Project metadata
 project(exampleApp)
-
-# Project dependencies
-add_subdirectory(external)
 
 file(
     GLOB
@@ -51,18 +37,10 @@ file(
 )
 
 # Project core
-if(BUILD_TARGET MATCHES "WIN")
-    add_executable(
-        ${PROJECT_NAME}
-        WIN32
-        ${EXECUTABLE_FILES}
-    )
-else()
-    add_executable(
-        ${PROJECT_NAME}
-        ${EXECUTABLE_FILES}
-    )
-endif()
+add_executable(
+    ${PROJECT_NAME}
+    ${EXECUTABLE_FILES}
+)
 
 target_link_libraries(
     ${PROJECT_NAME}
@@ -70,21 +48,20 @@ target_link_libraries(
         libStorm
 )
 
-target_compile_options(
-    ${PROJECT_NAME}
-    PUBLIC
-        -Wall
-)
-
-# Disables command prompt on windows
-if(BUILD_TARGET MATCHES "WIN")
-    target_link_options(${PROJECT_NAME} PRIVATE -mwindows)
-endif()
-
-# PSVita config
+# Post build stuff per platform.
 if(BUILD_TARGET MATCHES "VITA")
+
+    # Specific project flags.
+    target_compile_options(
+        ${PROJECT_NAME}
+        PRIVATE
+            -Wall
+            -O3
+    )
+
     ## Create Vita files
     vita_create_self(${PROJECT_NAME}.self ${PROJECT_NAME})
+
     # The FILE directive lets you add additional files to the VPK, the syntax is
     # FILE src_path dst_path_in_vpk. In this case, we add the LiveArea paths.
     vita_create_vpk(
@@ -95,20 +72,30 @@ if(BUILD_TARGET MATCHES "VITA")
         NAME ${VITA_APP_NAME}
         # Vita System files need to be separately set
         FILE assets/vita/icon0.png sce_sys/icon0.png
-        FILE assets/vita/livearea/contents/bg.png sce_sys/livearea/contents/bg.png
+        FILE assets/vita/livearea/contents/background.png sce_sys/livearea/contents/background.png
         FILE assets/vita/livearea/contents/startup.png sce_sys/livearea/contents/startup.png
         FILE assets/vita/livearea/contents/template.xml sce_sys/livearea/contents/template.xml
-        # TODO: replace some of this with folder copies or something
+        # TODO: replace some of this with folder copies or something, it's too much work for all of this.
         FILE assets/assetlist.json assets/assetlist.json
         FILE assets/fonts/list.json assets/fonts/list.json
         FILE assets/fonts/SCP/LICENSE.md assets/fonts/SCP/LICENSE.md
         FILE assets/fonts/SCP/SourceCodePro-Light.otf assets/fonts/SCP/SourceCodePro-Light.otf
         FILE assets/fonts/SCP/SourceCodePro-SemiboldIt.otf assets/fonts/SCP/SourceCodePro-SemiboldIt.otf
     )
-else()
-    # Install executables.
-    install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 
+else()
+
+    # Specific project flags for Debug / Release. (TODO)
+    target_compile_options(
+        ${PROJECT_NAME}
+        PRIVATE
+            -Wall
+    )
+
+    # Install executables.
+    install(TARGETS ${PROJECT_NAME})
+
+    # Copy game assets to output path.
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND "${CMAKE_COMMAND}" -E copy_directory_if_different
@@ -116,7 +103,7 @@ else()
             "../bin/assets/"
     )
 
-    # Remove Vita assets.
+    # Remove Vita assets. (TODO don't copy them in the first place?)
     add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND "${CMAKE_COMMAND}" -E rm -rf

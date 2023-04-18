@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 #ifdef VITA
     GameManager::limit_FPS(60);
 #else
-    GameManager::limit_FPS(144);
+    GameManager::limit_FPS(200);
 #endif
 
     GameManager::push_state(new LoadingState());
