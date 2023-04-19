@@ -90,6 +90,7 @@ else()
         ${PROJECT_NAME}
         PRIVATE
             -Wall
+            -O3
     )
 
     # Install executables.
