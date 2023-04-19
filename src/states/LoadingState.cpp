@@ -29,8 +29,10 @@ void LoadingState::draw()
 void LoadingState::update(double dt)
 {
     // Press escape to close window
+#ifndef VITA
     if(Input::isKeyReleased(SDLK_ESCAPE))
         Window::close();
+#endif
 
     // Update scene
     root->execute_all("update");
@@ -44,6 +46,7 @@ void LoadingState::update(double dt)
     }
 
     // Toggle fullscreen
+#ifndef VITA
     if(Input::isKeyPressed(SDLK_F11))
     {
         if(!Window::is_fullscreen())
@@ -51,4 +54,5 @@ void LoadingState::update(double dt)
         else
             Window::set_fullscreen(0);
     }
+#endif
 }
