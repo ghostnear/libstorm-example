@@ -1,5 +1,6 @@
 #include <libStorm.hpp>
 #include "states/all.hpp"
+#include "system/Graphics.hpp"
 
 using namespace Storm;
 
@@ -12,18 +13,11 @@ int main(int argc, char* argv[])
     if(StormInit() == EXIT_FAILURE)
         return EXIT_FAILURE;
 
-    // Set metadata
+    // Set metadata.
     Window::set_name("libStorm Example");
+    Graphics::toggle_vsync();
 
     // Push the default state to the manager
-    // TODO: replace this with a config system to make everything customizable
-    // TODO: also make it actually work as it limits nothing.
-#ifdef VITA
-    GameManager::limit_FPS(60);
-#else
-    GameManager::limit_FPS(200);
-#endif
-
     GameManager::push_state(new LoadingState());
 
     // Main loop

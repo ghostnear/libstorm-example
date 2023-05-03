@@ -1,5 +1,4 @@
-#ifndef LIBSTORM_EXAMPLE_MAIN_TEXT_HPP
-#define LIBSTORM_EXAMPLE_MAIN_TEXT_HPP
+#pragma once
 
 #include <libStorm.hpp>
 
@@ -21,4 +20,3 @@ public:
     MainText(MainTextConfig config);
 };
 
-#endif

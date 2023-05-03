@@ -1,5 +1,4 @@
-#ifndef GAME_MAINSTATE_HPP
-#define GAME_MAINSTATE_HPP
+#pragma once
 
 #include <libStorm.hpp>
 
@@ -13,5 +12,3 @@ public:
     void draw() override;
     void update(double dt) override;
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef LIBSTORM_EXAMPLE_SCROLLING_RECTANGLES_HPP
-#define LIBSTORM_EXAMPLE_SCROLLING_RECTANGLES_HPP
+#pragma once
 
 #include <libStorm.hpp>
 
@@ -18,4 +17,3 @@ public:
     ScrollingRectangles(ScrollingRectanglesConfig config);
 };
 
-#endif
