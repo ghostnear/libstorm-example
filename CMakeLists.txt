@@ -70,17 +70,8 @@ if(BUILD_TARGET MATCHES "VITA")
         ${PROJECT_NAME}.self
         VERSION ${VITA_VERSION}
         NAME ${VITA_APP_NAME}
-        # Vita System files need to be separately set
-        FILE vita-metadata/icon0.png sce_sys/icon0.png
-        FILE vita-metadata/livearea/contents/background.png sce_sys/livearea/contents/background.png
-        FILE vita-metadata/livearea/contents/startup.png sce_sys/livearea/contents/startup.png
-        FILE vita-metadata/livearea/contents/template.xml sce_sys/livearea/contents/template.xml
-        # TODO: replace some of this with folder copies or something, it's too much work for all of this.
-        FILE assets/assetlist.json assets/assetlist.json
-        FILE assets/fonts/list.json assets/fonts/list.json
-        FILE assets/fonts/SCP/LICENSE.md assets/fonts/SCP/LICENSE.md
-        FILE assets/fonts/SCP/SourceCodePro-Light.otf assets/fonts/SCP/SourceCodePro-Light.otf
-        FILE assets/fonts/SCP/SourceCodePro-SemiboldIt.otf assets/fonts/SCP/SourceCodePro-SemiboldIt.otf
+        FILE vita-metadata sce_sys
+        FILE assets assets
     )
 
 else()

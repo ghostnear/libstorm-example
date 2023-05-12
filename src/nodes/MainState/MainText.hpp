@@ -10,11 +10,21 @@ struct MainTextConfig
         .y = 0.5
     };
     double scale = 0.5;
-    Storm::Prefabs::TextNodeConfig textCfg;
+    Storm::Prefabs::TextNodeConfig textCfg = {
+        size : 64,
+        textOffset : {
+            .x = 0.5,
+            .y = 0.5
+        },
+        initialText : "LibStorm"
+    };
 };
 
 class MainText : public Storm::Prefabs::TextNode
 {
+protected:
+    static void main_text_update(Node* slf);
+
 public:
     // Constructor
     MainText(MainTextConfig config);

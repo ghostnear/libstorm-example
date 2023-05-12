@@ -4,29 +4,13 @@ using namespace Storm;
 
 void LoadingState::on_init()
 {
-    LoadingBarConfig cfg;
-    root->add_child(new LoadingBar(cfg), "loading_bar");
+    root->add_child(new LoadingBar({}), "loading_bar");
 
     AssetLoader::load("./assets/assetlist.json");
     AssetLoader::start();
 }
 
-void LoadingState::on_destroy()
-{
-
-}
-
-void LoadingState::draw()
-{
-    Graphics::clear(0, 0, 0);
-
-    // Draw scene
-    root->execute_all("draw");
-
-    Graphics::update();
-}
-
-void LoadingState::update(double dt)
+void LoadingState::update()
 {
     // Press escape to close window
 #ifndef VITA
@@ -44,15 +28,4 @@ void LoadingState::update(double dt)
         GameManager::pop_state();
         GameManager::push_state(new MainState());
     }
-
-    // Toggle fullscreen
-#ifndef VITA
-    if(Input::isKeyPressed(SDLK_F11))
-    {
-        if(!Window::is_fullscreen())
-            Window::set_fullscreen(SDL_WINDOW_FULLSCREEN_DESKTOP);
-        else
-            Window::set_fullscreen(0);
-    }
-#endif
 }

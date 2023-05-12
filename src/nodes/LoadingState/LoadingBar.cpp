@@ -28,15 +28,15 @@ void loading_bar_draw(Node* slf)
 
 LoadingBar::LoadingBar(LoadingBarConfig config)
 {
-    add_component<double>(
+    set_component<double>(
         "padding",
         new double(config.padding)
     );
-    add_component<SDL_Color>(
+    set_component<SDL_Color>(
         "primary_color",
         new SDL_Color(config.primary)
     );
-    add_component<SDL_Color>(
+    set_component<SDL_Color>(
         "secondary_color",
         new SDL_Color(config.secondary)
     );
